@@ -1,0 +1,17 @@
+{
+  "S3 Object Storage": "S3 Object Storage",
+  "Create S3 User": "Create S3 User",
+  "User Management": "User Management",
+  "Bucket Owner": "Bucket Owner",
+  "Create Bucket": "Create Bucket",
+  "Type": "Type",
+  "Bucket Management": "Bucket Management",
+  "Kind": "Kind",
+  "Owner": "Owner",
+  "Name": "Name",
+  "Copy": "Copy",
+  "Copied": "Copied",
+  "Access Key": "Access Key",
+  "Secret Key": "Secret Key",
+  "Creation Date": "Creation Date"
+}

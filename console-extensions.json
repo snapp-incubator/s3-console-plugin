@@ -1,0 +1,63 @@
+[
+  {
+    "type": "console.page/route",
+    "properties": {
+      "exact": true,
+      "path": ["/k8s/ns/:ns/s3UserStorage"],
+      "component": {
+        "$codeRef": "UserList"
+      }
+    }
+  },
+  {
+    "type": "console.page/route",
+    "properties": {
+      "exact": true,
+      "path": ["/k8s/ns/:ns/s3Bucket"],
+      "component": {
+        "$codeRef": "BucketList"
+      }
+    }
+  },
+  {
+    "type": "console.page/route",
+    "properties": {
+      "exact": true,
+      "path": [
+        "/k8s/ns/:ns/clusterserviceversions/s3-operator.v0.3.3/s3.snappcloud.io~v1alpha1~S3UserClaim/~new"
+      ]
+    }
+  },
+  {
+    "type": "console.navigation/section",
+    "properties": {
+      "perspective": "admin",
+      "id": "s3object-storage",
+      "insertAfter": "networking",
+      "name": "%plugin__s3storage-console-plugin~S3 Object Storage%",
+      "dataAttributes": { "data-quickstart-id": "qs-nav-home" }
+    }
+  },
+  {
+    "type": "console.navigation/href",
+    "properties": {
+      "prefixNamespaced": true,
+      "id": "user-management",
+      "perspective": "admin",
+      "section": "s3object-storage",
+      "name": "%plugin__s3storage-console-plugin~User Management%",
+      "href": "/k8s/ns/:ns/s3UserStorage"
+    }
+  },
+  {
+    "type": "console.navigation/href",
+    "properties": {
+      "prefixNamespaced": true,
+      "id": "bucket-managment",
+      "perspective": "admin",
+      "section": "s3object-storage",
+      "name": "%plugin__s3storage-console-plugin~Bucket Management%",
+      "href": "/k8s/ns/:ns/s3Bucket"
+    }
+  }
+]
