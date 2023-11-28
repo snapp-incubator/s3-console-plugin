@@ -1,4 +1,4 @@
-# OpenShift S3Storage Plugin
+# OpenShift S3 Operator Plugin
 
 At Snapp!, we leverage Ceph object storage to provide users with the seamless functionality of S3. Our plugin ensures a user-friendly experience by simplifying the management of users and buckets within the Openshift.
 
