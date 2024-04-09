@@ -24,7 +24,7 @@
     "properties": {
       "exact": true,
       "path": [
-        "/k8s/ns/:ns/clusterserviceversions/s3-operator.v0.3.3/s3.snappcloud.io~v1alpha1~S3UserClaim/~new"
+        "/k8s/ns/:ns/clusterserviceversions/s3-operator.v0.3.4/s3.snappcloud.io~v1alpha1~S3UserClaim/~new"
       ]
     }
   },
