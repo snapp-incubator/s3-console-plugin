@@ -1,39 +1,46 @@
 import { userClaimUrl } from '../utils/modelK8s';
 
 function objectTransform(response) {
-  const newResponse = [];
+  const transformedResponse = [];
+
   response.items.forEach((item) => {
-    const newItem = {
-      kind: item.kind,
-      url: `/k8s/ns/${item.metadata.namespace}/${userClaimUrl}/${item.metadata.name}`,
+    const { kind, metadata, spec } = item;
+    const url = `/k8s/ns/${metadata.namespace}/${userClaimUrl}/${metadata.name}`;
+    const transformedItem = {
+      kind,
+      url,
       owner: 'self',
-      metadata: {
-        name: item.metadata.name,
-      },
+      metadata: { name: metadata.name },
       spec: {
-        s3UserClass: item.spec.s3UserClass,
-        adminSecret: item.spec.adminSecret,
-        accessSecret: item.spec.adminSecret,
+        s3UserClass: spec.s3UserClass,
+        adminSecret: spec.adminSecret,
+        accessSecret: spec.adminSecret,
       },
     };
-    newResponse.push(newItem);
-    item.spec.subusers.forEach((user) => {
-      newResponse.push({
-        kind: 'subuser',
-        url: `/k8s/ns/${item.metadata.namespace}/secrets/${item.metadata.name}-${user}`,
-        owner: item.metadata.name,
-        metadata: {
-          name: user,
-        },
-        spec: {
-          s3UserClass: item.spec.s3UserClass,
-          adminSecret: `${item.metadata.name}-${user}`,
-          accessSecret: `${item.metadata.name}-${user}`,
-        },
+    transformedResponse.push(transformedItem);
+
+    if (spec.subusers) {
+      spec.subusers.forEach((user) => {
+        const subuserUrl = `/k8s/ns/${metadata.namespace}/secrets/${metadata.name}-${user}`;
+
+        const subuserItem = {
+          kind: 'subuser',
+          url: subuserUrl,
+          owner: metadata.name,
+          metadata: { name: user },
+          spec: {
+            s3UserClass: spec.s3UserClass,
+            adminSecret: `${metadata.name}-${user}`,
+            accessSecret: `${metadata.name}-${user}`,
+          },
+        };
+
+        transformedResponse.push(subuserItem);
       });
-    });
+    }
   });
-  return newResponse;
+
+  return transformedResponse;
 }
 
 export default objectTransform;
