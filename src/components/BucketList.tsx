@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useHistory } from 'react-router-dom';
 import {
   ListPageHeader,
   ListPageBody,
@@ -30,6 +31,11 @@ const NamespacePageContent = ({ namespace }: { namespace?: string }) => {
   const [k8sUserStorage, setK8sUserStorage] = React.useState<any>();
   const [loaded, setLoaded] = React.useState(false);
   const loadError = '';
+  const history = useHistory();
+
+  const handleBucketCreate = () => {
+    history.push(`/k8s/ns/${namespace}/${bucketUrl}/~new`);
+  };
 
   const filters: RowFilter[] = [];
 
@@ -125,7 +131,7 @@ const NamespacePageContent = ({ namespace }: { namespace?: string }) => {
   return (
     <>
       <ListPageHeader title={t('Bucket Management')}>
-        <Button component="a" href={`/k8s/ns/${namespace}/${bucketUrl}/~new`}>
+        <Button component="a" onClick={handleBucketCreate}>
           {t('Create Bucket')}
         </Button>
       </ListPageHeader>

@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useHistory } from 'react-router-dom';
 import {
   ListPageHeader,
   ListPageBody,
@@ -14,11 +15,13 @@ import {
   useK8sModel,
   getGroupVersionKindForResource,
 } from '@openshift-console/dynamic-plugin-sdk';
+
 import { ListPageProps, TableProps } from '../utils/types';
 import { mockS3User, mockSecrets, userClaimUrl } from '../utils/modelK8s';
 import { Button, ClipboardCopy, Label } from '@patternfly/react-core';
 import { useTranslation } from 'react-i18next';
 import objectTransform from '../utils/objectTransform';
+
 // global style
 import './style.css';
 
@@ -34,6 +37,11 @@ const NamespacePageContent = ({ namespace }: { namespace?: string }) => {
     getGroupVersionKindForResource(mockSecrets),
   );
   const loadError = '';
+  const history = useHistory();
+
+  const handleUserCreate = () => {
+    history.push(`/k8s/ns/${namespace}/${userClaimUrl}/~new`);
+  };
 
   const filters: RowFilter[] = [
     {
@@ -180,10 +188,7 @@ const NamespacePageContent = ({ namespace }: { namespace?: string }) => {
   return (
     <>
       <ListPageHeader title={t('User Management')}>
-        <Button
-          component="a"
-          href={`/k8s/ns/${namespace}/${userClaimUrl}/~new`}
-        >
+        <Button component="a" onClick={handleUserCreate}>
           {t('Create S3 User')}
         </Button>
       </ListPageHeader>
