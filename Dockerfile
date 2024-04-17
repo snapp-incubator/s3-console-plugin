@@ -1,4 +1,4 @@
-FROM docker.io/library/node:21 AS build
+FROM node:20-buster-slim as build
 USER root
 RUN command -v yarn || npm i -g yarn
 ADD . /usr/src/app
