@@ -4,7 +4,6 @@ import * as React from 'react';
 import { useSelector } from 'react-redux';
 import { Tooltip } from '@patternfly/react-core';
 import * as classNames from 'classnames';
-import { GlobeAmericasIcon } from '@patternfly/react-icons';
 import { TimestampProps } from '@openshift-console/dynamic-plugin-sdk';
 import * as dateTime from './datetime';
 
@@ -52,7 +51,6 @@ export const Timestamp = (props: TimestampProps) => {
     <div
       className={classNames('co-timestamp co-icon-and-text', props.className)}
     >
-      <GlobeAmericasIcon className="co-icon-and-text__icon" />
       <Tooltip
         content={[
           <span className="co-nowrap" key="co-timestamp">
