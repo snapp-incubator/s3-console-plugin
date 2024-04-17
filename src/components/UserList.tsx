@@ -17,7 +17,8 @@ import {
 } from '@openshift-console/dynamic-plugin-sdk';
 
 import { ListPageProps, TableProps } from '../utils/types';
-import { mockS3User, mockSecrets, userClaimUrl } from '../utils/modelK8s';
+import { mockS3User, mockSecrets } from '../utils/modelK8s';
+import { userClaimUrl } from '../utils/constants';
 import { Button, ClipboardCopy, Label } from '@patternfly/react-core';
 import { useTranslation } from 'react-i18next';
 import objectTransform from '../utils/objectTransform';

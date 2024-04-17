@@ -16,7 +16,9 @@ import {
   getGroupVersionKindForResource,
 } from '@openshift-console/dynamic-plugin-sdk';
 import { ListPageProps, TableProps } from '../utils/types';
-import { mockS3Bucket, bucketUrl } from '../utils/modelK8s';
+import { mockS3Bucket } from '../utils/modelK8s';
+import { bucketUrl } from '../utils/constants';
+
 import { Button, Label } from '@patternfly/react-core';
 import { Timestamp } from '../utils/timestamp';
 import { useTranslation } from 'react-i18next';

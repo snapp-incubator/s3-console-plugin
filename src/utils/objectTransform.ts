@@ -1,4 +1,4 @@
-import { userClaimUrl } from '../utils/modelK8s';
+import { userClaimUrl } from '../utils/constants';
 
 function objectTransform(response) {
   const transformedResponse = [];
