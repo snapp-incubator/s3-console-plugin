@@ -5,6 +5,8 @@
    * https://patternfly-react-main.surge.sh/developer-resources/global-css-variables */
   color: var(--pf-global--palette--blue-400);
 }
+
+/* stylelint-disable-next-line selector-disallowed-list -- keep copied keys on one line */
 .pf-c-clipboard-copy__text {
   white-space: nowrap !important;
 }

@@ -1,0 +1,5 @@
+node_modules
+dist
+.git
+integration-tests/screenshots
+integration-tests/videos

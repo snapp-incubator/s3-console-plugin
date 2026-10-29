@@ -1,9 +1,12 @@
-FROM node:20-buster-slim as build
+FROM node:24-slim AS build
 USER root
-RUN command -v yarn || npm i -g yarn
-ADD . /usr/src/app
 WORKDIR /usr/src/app
-RUN yarn install && yarn build
+# The e2e tests run elsewhere; skip Cypress's ~200 MB binary download.
+ENV CYPRESS_INSTALL_BINARY=0
+COPY package.json package-lock.json ./
+RUN npm ci
+COPY . .
+RUN npm run build
 
 FROM docker.io/library/nginx:latest
 

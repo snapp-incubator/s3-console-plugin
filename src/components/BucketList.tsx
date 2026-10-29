@@ -157,7 +157,7 @@ const NamespacePageContent = ({ namespace }: { namespace?: string }) => {
 };
 
 const BucketList: React.FC<ListPageProps> = ({ match }) => {
-  const { ns } = match?.params;
+  const ns = match?.params?.ns;
   const activeNamespace = ns || 'all-namespaces';
 
   return (

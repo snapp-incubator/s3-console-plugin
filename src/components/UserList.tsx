@@ -213,7 +213,7 @@ const NamespacePageContent = ({ namespace }: { namespace?: string }) => {
 };
 
 const UserList: React.FC<ListPageProps> = ({ match }) => {
-  const { ns } = match?.params;
+  const ns = match?.params?.ns;
   const activeNamespace = ns || 'all-namespaces';
 
   return (
